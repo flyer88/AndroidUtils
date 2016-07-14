@@ -1,17 +1,9 @@
 package com.dove.androidutils.common;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.os.Build;
-import android.os.Environment;
-import android.util.TypedValue;
-import android.view.WindowManager;
 
 import com.dove.androidutils.Utils;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -23,34 +15,6 @@ import java.util.regex.Pattern;
  * Created by dove on 16/7/13.
  */
 public class CommonUtils extends Utils{
-    /**
-     * 转换 dp 为 px
-     * @param dp
-     * @param resources
-     * @return
-     */
-    public static int dpToPx(float dp, Resources resources){
-        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
-        return (int) px;
-    }
-
-
-    /**
-     * 获取 window 宽度
-     * @return
-     */
-    public static float getScreenWidth () {
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        return wm.getDefaultDisplay().getWidth();
-    }
-    /**
-     * 获取 window 高度
-     * @return
-     */
-    public static float getScreenHeight () {
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        return wm.getDefaultDisplay().getHeight();
-    }
 
 
     /**

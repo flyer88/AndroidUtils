@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.util.Base64;
 
 import com.dove.androidutils.Utils;
-import com.dove.androidutils.common.CommonUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -30,8 +29,8 @@ public class BitmapUtis extends Utils{
     public static Bitmap drawableToBitmap(@NonNull Drawable drawable, Bitmap.Config config) {
 
         Bitmap bitmap = null;
-        int w = CommonUtils.dpToPx(100,getContext().getResources());
-        int h = CommonUtils.dpToPx(100,getContext().getResources());
+        int w = ScreenUtils.dpToPx(100,getContext().getResources());
+        int h = ScreenUtils.dpToPx(100,getContext().getResources());
         if (config == null) {
             config = drawable.getOpacity() != PixelFormat.OPAQUE ?
                             Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
@@ -125,7 +124,7 @@ public class BitmapUtis extends Utils{
             return;
         }
         Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0,
-                (int) CommonUtils.getScreenWidth(),(int) (CommonUtils.getScreenHeight() * percent));
+                (int) ScreenUtils.getScreenWidth(),(int) (ScreenUtils.getScreenHeight() * percent));
         try {
             FileOutputStream out = new FileOutputStream(sdImageMainDirectory);
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 8, out);

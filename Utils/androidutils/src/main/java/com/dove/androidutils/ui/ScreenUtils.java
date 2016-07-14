@@ -1,19 +1,50 @@
 package com.dove.androidutils.ui;
 
 import android.app.Activity;
-import android.os.Build;
+import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.view.View;
+import android.util.TypedValue;
 import android.view.WindowManager;
 
 import com.dove.androidutils.Utils;
-import com.dove.androidutils.common.AppUtils;
-import com.dove.androidutils.common.CommonUtils;
 
 /**
- * Created by dove on 16/7/13.
+ * Created by dove on 16/7/14.
  */
-public class ActivityUtils extends Utils{
+public class ScreenUtils extends Utils{
+
+
+
+    /**
+     * 转换 dp 为 px
+     * @param dp
+     * @param resources
+     * @return
+     */
+    public static int dpToPx(float dp, Resources resources){
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
+        return (int) px;
+    }
+
+
+    /**
+     * 获取 window 宽度
+     * @return
+     */
+    public static float getScreenWidth () {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        return wm.getDefaultDisplay().getWidth();
+    }
+    /**
+     * 获取 window 高度
+     * @return
+     */
+    public static float getScreenHeight () {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        return wm.getDefaultDisplay().getHeight();
+    }
+
 
     /**
      * 判断是否处于全屏状态
@@ -48,18 +79,4 @@ public class ActivityUtils extends Utils{
         }
     }
 
-    /**
-     * 通过修改外层高度,来动态修改 toolbar 高度,
-     * 用于适配 noactionbar 主题下,
-     * toolbar 在4.4和5.0显式效果不一样
-     * @param activity
-     * @param view 必须是包裹 toolbar 的外层的第一层,例如 AppBarLayout
-     */
-    public static void changeBarHeight(@NonNull Activity activity,View view){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            view.getLayoutParams().height = CommonUtils.dpToPx(56, activity.getResources()) + AppUtils.getStatusBarHeight();
-            view.requestLayout();
-            view.invalidate();
-        }
-    }
 }

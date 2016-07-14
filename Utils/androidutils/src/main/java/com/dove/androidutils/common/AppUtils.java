@@ -21,8 +21,6 @@ import java.util.Locale;
  */
 public class AppUtils extends Utils{
 
-
-
     /**
      * 获取 version code
      * @return
@@ -119,17 +117,6 @@ public class AppUtils extends Utils{
         }
     }
 
-    /**
-     * 获取 status bar 的高度
-     * @return
-     */
-    public static int getStatusBarHeight() {
-        int result = 0;
-        int resourceId = getContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getContext().getResources().getDimensionPixelSize(resourceId);
-        }
-        return result;
-    }
+
 
 }
