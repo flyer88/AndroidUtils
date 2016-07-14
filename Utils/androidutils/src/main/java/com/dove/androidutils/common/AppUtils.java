@@ -1,10 +1,15 @@
 package com.dove.androidutils.common;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.provider.SyncStateContract;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -14,6 +19,7 @@ import android.widget.EditText;
 
 import com.dove.androidutils.Utils;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -117,6 +123,19 @@ public class AppUtils extends Utils{
         }
     }
 
-
+    /**
+     * 获取所有的 activity
+     * @param ctx
+     * @return
+     */
+    public static ArrayList<String> getActivities(Context ctx) {
+        ArrayList<String> result = new ArrayList<String>();
+        Intent intent = new Intent(Intent.ACTION_MAIN, null);
+        intent.setPackage(ctx.getPackageName());
+        for (ResolveInfo info : ctx.getPackageManager().queryIntentActivities(intent, 0)) {
+            result.add(info.activityInfo.name);
+        }
+        return result;
+    }
 
 }

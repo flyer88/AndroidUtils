@@ -19,12 +19,21 @@ public class ScreenUtils extends Utils{
     /**
      * 转换 dp 为 px
      * @param dp
-     * @param resources
      * @return
      */
-    public static int dpToPx(float dp, Resources resources){
-        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
+    public static int dpToPx(float dp){
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getContext().getResources().getDisplayMetrics());
         return (int) px;
+    }
+
+    /**
+     * px 转为 dp
+     * @param px
+     * @return
+     */
+    public static int pxToDp(float px){
+        float dp = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,px,getContext().getResources().getDisplayMetrics());
+        return (int) dp;
     }
 
 

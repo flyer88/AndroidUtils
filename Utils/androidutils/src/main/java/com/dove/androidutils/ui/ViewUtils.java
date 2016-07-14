@@ -46,7 +46,7 @@ public class ViewUtils extends Utils{
      */
     public static void changeBarHeight(@NonNull Activity activity, View view){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            view.getLayoutParams().height = ScreenUtils.dpToPx(56, activity.getResources()) + getStatusBarHeight();
+            view.getLayoutParams().height = ScreenUtils.dpToPx(56) + getStatusBarHeight();
             view.requestLayout();
             view.invalidate();
         }

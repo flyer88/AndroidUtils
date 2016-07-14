@@ -29,8 +29,8 @@ public class BitmapUtis extends Utils{
     public static Bitmap drawableToBitmap(@NonNull Drawable drawable, Bitmap.Config config) {
 
         Bitmap bitmap = null;
-        int w = ScreenUtils.dpToPx(100,getContext().getResources());
-        int h = ScreenUtils.dpToPx(100,getContext().getResources());
+        int w = ScreenUtils.dpToPx(100);
+        int h = ScreenUtils.dpToPx(100);
         if (config == null) {
             config = drawable.getOpacity() != PixelFormat.OPAQUE ?
                             Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;

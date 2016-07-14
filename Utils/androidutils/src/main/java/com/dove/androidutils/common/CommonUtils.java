@@ -88,5 +88,19 @@ public class CommonUtils extends Utils{
         return new UUID(m_szDevIDShort.hashCode(), serial.hashCode()).toString();
     }
 
+    /**
+     * 检测是否含有中文字
+     * @param sequence
+     * @return
+     */
+    public static boolean checkChinese(String sequence) {
+        final String format = "[\\u4E00-\\u9FA5\\uF900-\\uFA2D]";
+        boolean result = false;
+        Pattern pattern = Pattern.compile(format);
+        Matcher matcher = pattern.matcher(sequence);
+        result = matcher.find();
+        return result;
+    }
+
 
 }
