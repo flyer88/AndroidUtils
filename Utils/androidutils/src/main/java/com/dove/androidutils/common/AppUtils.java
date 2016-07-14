@@ -24,6 +24,7 @@ import java.util.Locale;
 
 /**
  * Created by dove on 16/7/13.
+ * App 相关的一些方法
  */
 public class AppUtils extends Utils{
 

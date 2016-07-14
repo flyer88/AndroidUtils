@@ -12,6 +12,7 @@ import com.dove.androidutils.Utils;
 
 /**
  * Created by dove on 16/7/14.
+ * 视图相关的工具类
  */
 public class ViewUtils extends Utils{
 

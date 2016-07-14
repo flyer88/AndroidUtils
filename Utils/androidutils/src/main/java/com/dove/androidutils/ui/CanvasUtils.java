@@ -6,6 +6,8 @@ import com.dove.androidutils.Utils;
 
 /**
  * Created by dove on 16/7/13.
+ * 在 onDraw 中的一些常用类
+ * path,canvas 需要用到的工具类
  */
 public class CanvasUtils extends Utils{
     /**

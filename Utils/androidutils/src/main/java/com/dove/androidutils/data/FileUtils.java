@@ -8,6 +8,7 @@ import java.io.File;
 
 /**
  * Created by dove on 16/7/13.
+ * Android 上常见的文件操作
  */
 public class FileUtils extends Utils{
 

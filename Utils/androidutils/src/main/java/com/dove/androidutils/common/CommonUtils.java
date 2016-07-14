@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by dove on 16/7/13.
+ * 乱七八糟的一些工具方法
  */
 public class CommonUtils extends Utils{
 

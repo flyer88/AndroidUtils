@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by dove on 16/7/13.
+ * 和 Android 版本变化相关的工具类
  */
 public class VersionUtils extends Utils{
 

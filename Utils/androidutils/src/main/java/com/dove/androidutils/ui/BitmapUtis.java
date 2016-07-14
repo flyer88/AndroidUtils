@@ -18,6 +18,7 @@ import java.io.IOException;
 
 /**
  * Created by dove on 16/7/13.
+ * bitmap 的处理类
  */
 public class BitmapUtis extends Utils{
 

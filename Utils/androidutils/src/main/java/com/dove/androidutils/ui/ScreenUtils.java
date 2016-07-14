@@ -11,6 +11,7 @@ import com.dove.androidutils.Utils;
 
 /**
  * Created by dove on 16/7/14.
+ * 屏幕相关的工具,一般都是全局的设置
  */
 public class ScreenUtils extends Utils{
 
