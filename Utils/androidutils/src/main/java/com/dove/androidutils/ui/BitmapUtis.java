@@ -1,13 +1,15 @@
-package com.dove.utils;
+package com.dove.androidutils.ui;
 
-import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.util.Base64;
+
+import com.dove.androidutils.Utils;
+import com.dove.androidutils.common.CommonUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -18,19 +20,18 @@ import java.io.IOException;
 /**
  * Created by dove on 16/7/13.
  */
-public class BitmapUtis {
+public class BitmapUtis extends Utils{
 
     /**
      * 把 drawable 转换成 bitmap
      * @param drawable
-     * @param context
      * @return
      */
-    public static Bitmap drawableToBitmap(Drawable drawable, Context context,Bitmap.Config config) {
+    public static Bitmap drawableToBitmap(@NonNull Drawable drawable, Bitmap.Config config) {
 
         Bitmap bitmap = null;
-        int w = CommonUtils.dpToPx(100,context.getResources());
-        int h = CommonUtils.dpToPx(100,context.getResources());
+        int w = CommonUtils.dpToPx(100,getContext().getResources());
+        int h = CommonUtils.dpToPx(100,getContext().getResources());
         if (config == null) {
             config = drawable.getOpacity() != PixelFormat.OPAQUE ?
                             Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565;
@@ -50,7 +51,7 @@ public class BitmapUtis {
      * @return
      */
 
-    public static String bitmapToString(Bitmap bitmap) {
+    public static String bitmapToString(@NonNull Bitmap bitmap) {
 
         String stringMap = null;
 
@@ -70,7 +71,7 @@ public class BitmapUtis {
      * @param string
      * @return
      */
-    public static Bitmap stringToBitmap(String string) {
+    public static Bitmap stringToBitmap(@NonNull String string) {
         Bitmap bitmap = null;
         try {
             byte[] bitmapArray;
@@ -90,7 +91,7 @@ public class BitmapUtis {
      * @param maxSize 压缩图片不超过maxSize
      * @return
      */
-    public static ByteArrayOutputStream compressBitmap(Bitmap bitmap,long maxSize) {
+    public static ByteArrayOutputStream compressBitmap(@NonNull Bitmap bitmap,long maxSize) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
@@ -117,16 +118,14 @@ public class BitmapUtis {
      * 把 bitmap 保存到文件中
      * @param bitmap
      * @param sdImageMainDirectory
-     * @param activity
      * @param percent
      */
-    public static void saveBitmapToFile(Bitmap bitmap, File sdImageMainDirectory, Activity activity, float percent) {
+    public static void saveBitmapToFile(@NonNull Bitmap bitmap,@NonNull File sdImageMainDirectory, float percent) {
         if (bitmap == null){
             return;
         }
         Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0,
-                activity.getWindowManager().getDefaultDisplay().getWidth(),
-                (int) (activity.getWindowManager().getDefaultDisplay().getHeight() * percent));
+                (int) CommonUtils.getScreenWidth(),(int) (CommonUtils.getScreenHeight() * percent));
         try {
             FileOutputStream out = new FileOutputStream(sdImageMainDirectory);
             scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 8, out);
@@ -149,7 +148,7 @@ public class BitmapUtis {
      * @param second
      * @return
      */
-    public static Bitmap add2Bitmap(Bitmap first, Bitmap second) {
+    public static Bitmap add2Bitmap(@NonNull Bitmap first,@NonNull Bitmap second) {
         int width =first.getWidth() + second.getWidth();
         int height = Math.max(first.getHeight(), second.getHeight());
         Bitmap result = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);

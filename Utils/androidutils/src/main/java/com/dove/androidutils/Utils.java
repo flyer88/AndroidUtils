@@ -1,4 +1,4 @@
-package com.dove.utils;
+package com.dove.androidutils;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,5 +12,10 @@ public class Utils {
     public static void initialized(@NonNull Context context){
         sContext = context;
     }
+
+    protected static Context getContext(){
+        return sContext;
+    }
+
 
 }

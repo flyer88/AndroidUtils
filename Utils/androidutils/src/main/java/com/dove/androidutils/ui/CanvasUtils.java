@@ -1,11 +1,13 @@
-package com.dove.utils;
+package com.dove.androidutils.ui;
 
 import android.graphics.Path;
+
+import com.dove.androidutils.Utils;
 
 /**
  * Created by dove on 16/7/13.
  */
-public class CanvasUtils {
+public class CanvasUtils extends Utils{
     /**
      * 返回一个圆角矩形的 path
      * @param left
